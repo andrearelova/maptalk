@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Landing from './Landing.js';
 import Finish from './Finish.js'
 import {
     BrowserRouter as Router,
     Route,
-    Switch,
-    Link
+    Switch
 } from "react-router-dom";
-import cookie from "react-cookies";
 
 function App() {
   return (

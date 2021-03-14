@@ -1,45 +1,37 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import ChatBubble from "./ChatBubble"
-import PersonIcon from '@material-ui/icons/Person';
 import CheckIcon from '@material-ui/icons/Check';
 import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { googleTranslate } from "./utils/googleTranslate";
 
 function Landing(props) {
-    const [pageLeft, setPageLeft] = useState(0);
-    const [page, setPage] = useState(0);
-    const [user1Message, setUser1Message] = useState("");
-    const [user2Message, setUser2Message] = useState("");
-    const handleChange = (e, newVal) => {
-      setPage(newVal);
-    }
+  const [languageOne, setLanguageOne] = useState("en");
+  const [languageTwo, setLanguageTwo] = useState("en");
+  const [languageCodes, setLanguageCodes] = useState([]);
+  const [user1Tab1, setUser1Tab1] = useState("Talk");
+  const [user1Tab2, setUser1Tab2] = useState("Feedback");
+  const [user2Tab1, setUser2Tab1] = useState("Talk");
+  const [user2Tab2, setUser2Tab2] = useState("Feedback");
+  useEffect(() => {
+    googleTranslate.getSupportedLanguages("en", function(err, languageCodes) {
+      getLanguageCodes(languageCodes); // use a callback function to setState
+    });
+  });
+  const getLanguageCodes = languageCodes => {
+    setLanguageCodes(languageCodes);
+  };
   return (
     <div style={{height:"80vh"}}>
     <h1 className="MapTalk">MapTalk</h1>
     <div style={{display: "flex", flexDirection: "row", height:"100%"}}>
       <div>
-        <ChatBubble userMessage={user1Message} userLang={"en"} labels={{label1:"talk",label2:"feedback", etc:"xd"}}/>
-        <div className="Triangle1"/>
-        <div className="Person">
-          <PersonIcon style={{fontSize: '90px', color: '#B45F2F', marginTop: '2vh'}}/>
-          <Button style={{marginLeft: "-3vw", width: "30%", backgroundColor:"#FAF3F3", borderRadius:"50px", paddingTop:"5px", paddingBottom:"5px", paddingLeft:"30px", paddingRight:"30px", fontFamily:"'Inter', sans-serif", fontSize:"25px", textTransform:"capitalize"}} endIcon={<ExpandMoreIcon style={{fontSize:"30px"}}/>}>English</Button>
-        </div>
+        <ChatBubble personNum="Person1" triangleName="Triangle1" language={languageOne} setLanguage={setLanguageOne} otherLanguage={languageTwo} languageCodes={languageCodes} tab1={user1Tab1} setTab1={setUser1Tab1} tab2={user1Tab2} setTab2={setUser1Tab2}/>
       </div>
       <div style={{display: "flex", flexDirection: "column", height:"100%", paddingLeft:"8vw"}}>
       <div style={{flexGrow:"1"}}/>
-        <ChatBubble userMessage={user2Message} userLang={"es"} labels={{label1:"hablar",label2:"feedbacko", etc:"xd"}}/>
+        <ChatBubble personNum="Person2" triangleName="Triangle2" language={languageTwo} setLanguage={setLanguageTwo} otherLanguage={languageOne} languageCodes={languageCodes} tab1={user2Tab1} setTab1={setUser2Tab1} tab2={user2Tab2} setTab2={setUser2Tab2}/>
         <div style={{flexGrow:"1"}}>
-          <div className="Triangle2"/>
-          <div className="Person">
-            <PersonIcon style={{fontSize: '90px', color: '#B45F2F', marginTop: '2vh', marginLeft: '33vw'}}/>
-            <Button style={{marginLeft: "30vw", width: "30%", backgroundColor:"#FAF3F3", borderRadius:"50px", paddingTop:"5px", paddingBottom:"5px", paddingLeft:"30px", paddingRight:"30px", fontFamily:"'Inter', sans-serif", fontSize:"25px", textTransform:"capitalize"}} endIcon={<ExpandMoreIcon style={{fontSize:"30px"}}/>}>Español</Button>
-          </div>
         </div>
       </div>
       </div>
@@ -53,5 +45,4 @@ function Landing(props) {
     </div>
   );
 }
-
 export default Landing;

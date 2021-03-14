@@ -26,7 +26,13 @@ hr {
   width: 40vw;
 }
 
-.Triangle1 {
+.Translation{
+  font-family: 'Inter', sans-serif;
+  color: #545454;
+  margin-left: 2vw;
+}
+
+.Triangle1{
   margin-left: 3vw;
   margin-top: -10px;
   width: 0;
@@ -37,7 +43,7 @@ hr {
   transform: rotate(135deg);
 }
 
-.Triangle2 {
+.Triangle2{
   margin-top: -10px;
   margin-left: 32vw;
   width: 0;
@@ -48,9 +54,28 @@ hr {
   transform: rotate(-135deg);
 }
 
-.Person {
+.Person1{
   display: flex;
   flex-direction: column;
+}
+
+.Person2{
+  display: flex;
+  flex-direction: column;
+  margin-left: 32vw;
+}
+
+.LangSelect{
+  background-color: #FAF3F3;
+  height: 6vh;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  width: 10vw;
+  padding-left: 10px;
+  margin-left: -2vw;
 }
 
 .RightBubble{
@@ -69,6 +94,16 @@ hr {
   justify-content: center;
   flex-grow: 1;
   padding-top: 5vh;
+}
+
+.Feedback1{
+  color: '#8A8785';
+  font-size:'50px'
+}
+
+.Feedback2{
+  color: '#B45F2F';
+  font-size:'50px'
 }
 
 .CheckWrapper{
