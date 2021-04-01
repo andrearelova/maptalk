@@ -12,7 +12,7 @@ function Finish(props) {
         <h2 className="FirstLang">Thank you for your participation.</h2>
         <h2 className="SecondLang">Gracias por su participación.</h2>
         <div className="SurveyWrapper">
-          <a href="https://elearning.ufl.edu/supported-services/qualtrics/">
+          <a href="https://forms.gle/7NsWgMrjV6FiZvvq5">
             <Button style={{backgroundColor:"#B45F2F", color:"#FAF3F3", borderRadius:"50px", paddingTop:"5px", paddingBottom:"5px", paddingLeft:"30px", paddingRight:"30px", fontFamily:"'Inter', sans-serif", fontSize:"25px", textTransform:"capitalize"}}>Survey/Encuesta</Button>
           </a>
         </div>
